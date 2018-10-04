@@ -46,7 +46,16 @@ class WebDriverFactory():
             driver = webdriver.Firefox()
         elif self.browser == "chrome":
             # Set chrome driver
-            driver = webdriver.Chrome(executable_path="C:\\Users\\kushwahr\\sel\\chromedriver.exe")
+            from selenium.webdriver.chrome.options import Options
+
+            chrome_options = webdriver.ChromeOptions()
+            chrome_options.add_argument('--no-sandbox')
+            chrome_options.add_argument('--window-size=1420,1080')
+            chrome_options.add_argument('--headless')
+            chrome_options.add_argument('--disable-gpu')
+            driver = webdriver.Chrome(chrome_options=chrome_options)
+
+
         else:
             driver = webdriver.Firefox()
         # Setting Driver Implicit Time out for An Element

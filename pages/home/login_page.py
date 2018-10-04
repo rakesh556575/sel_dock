@@ -42,6 +42,7 @@ class LoginPage(SeleniumDriver):
         self.elementClick(self._log_out_button,locatorType="link")
 
     def login(self, email, password):
+        self.waitForElement(self._login_link)
         self.clickLoginLink()
 
         self.enterEmail(email)
